@@ -1,0 +1,39 @@
+api:
+  api stands for application programming interface it is a software interface that allows two applications to communicate with each other.
+
+rest api:
+  rest stands for representational state transfer. rest isnt a specific api instead it defines the set of rule of how an api should work.
+  in sdn the api are used to communicate with the app and the controller via the north bound interface it uses rest api and on the southbound interface api that are used are netconf and restconf.
+
+  CRUD:
+    create, read, update, delete refers to the operations we perfrom using rest apis. crud uses http 
+
+
+  client-server:
+    rest api uses client server architecture and api calls uses http request to access the resources on the server and the server uses http response to reply 
+
+Sdn(software defined networking):
+  sdn is an approach to networking in which the control plane of the devices is centralized and it is controlled by an app called the controller.
+
+  traditional architecture uses distributed control plane on each device.
+
+  cisco has a sdn called as sd-access that is used to automate campus lans 
+  cisco dna center(digital network architecture) is used as the controller at the center of sd-access under the dna center we have the infrastructure that consists of network devices above the dna center we have the apps that interact with the dna center itself and interact with the rest api using the nbi.
+
+
+  what is fabric it consists of two term called the:
+  underlay:it is the underlying network infrastructure that consists of physical network devices and connections which provide ip connectivity.
+  
+  overlay:it is the virtual network that is build on top of the underlay network and sd-access uses the vxlan (virtual extensible lan) to build tunnels.
+
+  the underlay purpose is to support the overlay cuz to form the tunnels switches need to be able to reach each other 
+
+  roles of the switches in the sd-access:
+  edge nodes: connected to end hosts
+  border nodes: connected to outside domain such as the wan
+  control nodes: use lisp to perform control plane functions
+
+  sd-access can be added to a network that supports it is also called as brown field deployment.
+
+  a new deployment is called as greenfield deployment.
+

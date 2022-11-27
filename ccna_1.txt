@@ -1,0 +1,110 @@
+Network:
+  A network is a group of clients that share resources with each other that are also called as nodes. A network uses digitized medium to share resources that are in a form of video or docs to other nodes that are connected to each other. 
+  A network uses medium such as eth or wireless or optical tech to make up a network.
+  We need a NIC or network interface card to get a MAC address that is Media Access Control to become a node on the network. nic has a mac address that is burnt into the nic itself.
+
+  Carrier sense multiple access with collision domain (csma/cd):
+    before sending frames devices listen in the domain until they detect that other devices are not sending any frames. If a collision does occur devices send a jamming signal that a collision has occured and they wait a certain amount of time before sending the  frames again.
+   
+  Network devices:
+    Router is used for communications outside the lan 
+    switches are used to communicate inside the lan
+
+  MAC learning:
+    Switches learn mac address from the frames that it recives on the interface and associatte that interface with the source mac address of that frame in its mac address table and broadcast the unkown unicast frame on all its interfaces except the one it was recived on.
+
+  MAC aging:
+    Dynamic mac address expire in about 5 mints.
+
+  Subnetting:
+    It is the process of splitting the network into smaller pieces according to the host and network requirments. 
+    then therer are two types of subnetting vlsm and flsm 
+    vlsm is the way to go because it let us be flexible with the subnets.
+
+  Spanning Tree Protocol:
+    stp is a layer 2 protocol used to prevent broadcast stroms on the redundant network on switches it flood out bpdus from its interfaces and pcs or router connected to the switch dont send bpdu and dont participate in the process however the switches connected to it also sends the bpdus and inside bpdus is the bridge id which is the fusion of devices mac address and priority number + the vlan no.
+
+    switches with the lowest bridge id becomes the root bridge and other switches select the root port that has the lowest cost to the root bridge the port on the interface is always designated meaning it is always in the forwarding state and the root bridge port are always in the forwarding or designated state the switches with high root cost are in the blocking state and are shut down.
+
+
+    Spanning Tree Port states:
+      spanning tree has 4 states 2 of them are stable like blocking and forwarding it changes the port states as the interface fails to transitional states like listening and learning in the network topology.
+
+    Port Roles:
+     Root port is a port that is closest to the root bridge and has the lowest cost.
+     designated port is a port that has the lowest root cost on the segment or collision domain.
+     alternate port is a port that is the discarding port and function as the backup to the root port and recieve the superior bpdu from the other switch.
+
+
+Dynamic Routing:
+  Network Route:
+  it is the route to the network or the subnet in the routing table it is the route with the mask less than /32 
+
+  host route:
+  it is the route to a specific address in the routing table with the mask of /32
+  
+routers can use dynamic routing protocols to advertise other routers about other routes they know..routers form adjacenices or neighbourships with the other routers that share routing information and uses the metric to add the route in its routing table which costs less.
+
+metric are used to compare the routes learned via the same routing protocol 
+ad is used to compare the routing protocols ad also called as administrive distance.
+
+two protocols:
+
+IGP:interior gateway protocol 
+
+  RIP and EIGRP two distance vector protocols
+    Distance routing works by sending routes to their destination networks and the metric to raeach the destinatiion networks to their directly connected neighbours. This method is also called as routing by rumor. 
+  ospf and isis are two link state protocols
+  if a router learn a route to the same destination via the same routing protocol and has the same cost both routes will be added and traffic will be load balanced on the routes.
+
+EGP:exterior gateway protocol 
+
+  EGP uses path vector algo and the protocol that is used is BGP border gateway protocol.
+
+
+IPv6:
+
+  EUI-64 extended unique identifier is a method of making ipv6 address from the mac address in which the host portion is made by adding ffffe in the middle of the mac address and inverting the 7th bit in the address and we get the eui-64 address
+
+
+  types of ipv6:
+    Global unicast address:
+    these are the public addresses that can be used over the internet and they must be registred to use them and they are from the 2000::/3 range 
+
+    they are divided into three parts the first 48 bits are the global routing prefix that is assigned by the isp and the next 16 bits are the subnet id they make together the network portion and the 48 bits are the host portion or the interface id.
+
+  Unique local address:
+  these are the private ipv6 address that can be used inside the network but cant be routed over the internet and the packet destined for the this ip are dropped by the isp they begin the prfix ""fd"" and next 40 bits should be randomly generated.
+
+  Link local address:
+  these address are automatically genereated on the ipv6 enabled interfaces and are assigned the fe80::/10 are the network address and the rest of the interface id is generated from the eui 64 rules.
+
+  Multicast address:
+  multicast are address that are one to many that are from one source to many multiple destinations that have joined the multicast group they are from range ff00::/8 
+  multicast address for the :
+  all host ff02::1
+  all routes ff02::2
+  all ospf routers ff02::5 
+  all ospf dr/bdr ff02::6 
+  all rip routers ff02::9
+  all eigrp routers ff02::A
+
+  Mutlticast address scopes indicates how far the packet should be forwarded 
+  multicast scopes are :
+  interface local ff01:: the packet remains in the local device can be used to send traffic to a service in the local device.
+  link local ff02 : the  packet remains in the local subnet and is not routed between subnets...
+  site local multicast ff05:: they should remian in a single site but can be defined by the engineer and can be routed 
+  Organization local ff08:: these are wider in the scope than the sitelocal range and is defined by the enigneer.
+  global scope ff0E these are global and have no boundries and can be routed over the internet.
+
+  Anycast address:
+  it is a new features of ipv6 and anycast address are of one to one of many it is the ip address that is configured as the regular they use the same ip on multiple interface and routing protocol is enabled when hosts send packets to that destination the nearest router configured will be forwarded the packet according to the metric
+
+
+
+ 
+
+
+
+
+

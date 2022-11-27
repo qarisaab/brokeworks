@@ -1,0 +1,23 @@
+Network Automation:
+  why network automation it is used to manage the devices it is used to manage repitative tasks so that the time is not wasted and efficency is optimized and human error is also very minimal and it can be used on many device at a same time. Improved efffiency decrease opex and tasks have fewer man hours 
+
+  Types of network automation:
+    A python script is one example, tools like ansible, puppet and chef are also used but sdn is the one.
+
+  planes:
+    A network device is divided into planes by its functionality typically there are three planes:
+      data plane: tasks involved in sending user data are a part of the data plane (all process that iss used in forwarding user data is part of the data plane) also called as forwarding plane.
+
+      control plane: tasks involved in forwarding data are a part of control plane like how a router build its routing table and stp or protocols such as ospf 
+
+      managment plane: the managment plane consists of protocols that are used to manage devices ssh telnet are one of them `` the operation of managment and data plane are done by the cpu of the device but the data plane uses ASIC to do its job as the cpu is slow asic is a chip that is used for forwarding frames and mac address are stored in memory called tcam.
+
+  SDN(software defined networking):
+    It is an approach to networking in which the control plane is centralized and the architecture is also centralized and there is a controller that controls the network it is also called as controller based networking
+    the controller interact with the network devices using api 
+
+    sbi are used to control the network devices they are used by the controller to interact programmatically with the devices. some of the sbi open flow,cisco opflex..
+
+    nbi are used to interact with the controller itself and make changes to it and view the data the controller gathered.
+    a rest api is used on the controller as an interface to interact with the
+    

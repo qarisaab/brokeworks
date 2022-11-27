@@ -1,0 +1,106 @@
+wireless fundamentals:
+  wifi is a trademark of the wifi alliance and it is used to certify equipment for 802.11 standards.
+
+  in wlan the frames are flooded to each other like a hub because every device in range can recieve the signals
+
+  wlans uses csma/ca to avoid collision before they occur because the device listens before sending out frames
+
+  to send wireless signals the sender applies an alternating current to an antenna this creates an electromagnatic waves that propagate out as waves.
+
+  electromagnetic waves can be measured in terms of amplitude and frequency 
+
+  amplitude:
+    it is the maximum strength of the electric and magnetic fields
+
+  frequency:
+    it is number of up/down cycles per a given unit of time. measured in hz.
+
+  in a small wlan with only a single ap you can use any channel
+  however in large wlans with multiple aps. it is important that adjacent aps dont use overlapping channels to avoid interference.
+
+  service sets:
+    802.11 defines different kind of service sets which are group of wireless network devices all devices can have have the same ssid service set id the ssid is human readable and it is considered to be a name.
+    type of ssid:
+      independent: 
+        it is a wlan in which two devices communicate without the need of an ap 
+
+    infrastructure: 
+      it is a type of bss in which the device communicate with the help of an ap and are not directly connected to each other.
+
+      A bssid is used to uniquely identify the ap other ap can use the same ssid but different bssid.
+
+      ess(extended service set): is used to create large wlans beyond the range of a single ap we use an ess.
+
+
+    mesh basic service set:
+      it can be used in situations where it is difficult to run ethernet cables to connect to every ap.
+      mesh aps use two radios one to provide a bss to the wireless client and one is used to provide the backhaul network which is used as a bridge for traffic between ap to ap.
+      and one ap has to connected to the switch and it is called as root access point
+
+
+  AP functioning modes:
+    an ap can function different modes 
+    1. repeater mode
+    2. workgroupbridege
+    3. outdoor bridge 
+
+
+Wireless Architecture:
+  the wlan 802.11 header is different than the normal ethernet header it has much more fields and is more complicated.
+  header:
+    1.frame control: contains basic information about the frame.
+    2.duration: contains the time in milliseconds.
+    3.address: contains 4 address destination, source, reciever, transmitter.
+    4.sequence control: used to arrange the frames in sequence.
+    5.packet: the encapsulated packet.
+    6.fcs: used to repair the damaged frames.
+
+    802.11 association process:
+    for a client to bridge data to the network through the ap it first has to be associated with the ap the client must be authenticated and associated with the ap to send traffic through the ap.
+
+    two methods in which the client can scan for the bss
+    active scanning: the client send the probe request to the ap and the ap send the probe response.
+    passive scanning: in which the client listens for the beacon msgs send by the ap.
+    then there is an authentication exchange by the client and after that it is the association exchange 
+
+    these msgs are the same type of msgs and that is the managment msg types.
+
+    types of msg types:(802.11):
+      1. managment: used to manage the bss
+      2. control: used to control access to the medium radio frequency and assist with the managment of data frames
+      3. data: used to send the data frames.
+
+  AP deployments methods:
+    1. Autonomouse ap:
+      these ap are independent ap that are configured by the use of ssh or console connection they are connect to the switch by a trunk connection cuz it best to keep the data and managment traffic in the seperate vlan and network.
+
+    2. lightweight ap:
+      in this deployment the function of the ap is split between the ap and a wlc the ap handles the real time operations such as transmitting the rf traffic and encryptions and sending the beacon msgs etc.
+      other functions such as qos, acls, security managment are carried out by the wlc. {called as split mac architecture} wlc are used to centrally configure the aps and are located within the subnet or outside the subnet.
+      the wlc and the ap authenticcate each other by the use of certifcates (x.509) installed on each device. the lightweight aps and the wlc use the protocol called as capwap to communicate and capwap form the two tunnels between the ap and wlc data tunnel and control tunnel
+      control tunnel: 
+        it is the tunnel that is used to configure aps it uses the udp 5246
+      data tunnel:
+        it is the tunnel that is used to send the data traffic from the wireless clients to the wlc and it does not go the wired infrastructure directly it uses the udp 5247
+
+    3. Cloud based aps:
+      it is the architecture that is in between the autonomouse and split mac the aps are centrally managed in the cloud cisco meraki is one of them.
+      meraki dashboard are used to manage the traffic through the meraki dashboard that is in the cloud and managment traffic is send to thee cloud and regular data traffic is send to the wired network.
+
+    wlc deployment:
+    1. unified
+    2. embedded
+    3. running in a vm
+    4. mobility express
+
+Wireless Network Security:
+  security is important in all networks but it is more important in wireless networks because the signal are not contained with in the wire all devices with in the range of signal can recieve the frames so it is very important to encrypt the traffic sent.
+  1. Authentication:
+    all client must be authenticated before they can associate with the ap
+  2. Encryption:
+    encryption is used to encrypt the data between the client and the ap. Each device on the wlan should use the same encryption protocol and the client and ap will keep a key to encrypt and decrypt traffic
+  3. Integrity:
+    integrity is used to ensure that the msg is not tampered with to ensure that a mic (msg integrity check) is added to the msg to protect the integrity   
+
+Wireless Configuration:
+  ``````````````````````

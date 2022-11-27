@@ -1,0 +1,2 @@
+#### syslog:
+>syslog is an industry standard protocol that is used to generate msg according to the changes in the network device syslog msgs are differentiated based on the severity and the facility of the message. syslog uses udp port 514 the acronym to remember is that every awesome cisco engineer will need icecream daily there are 0 to 7 levels of the severity of the msg 0 being the most servere one .
